@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 export const CustomerList = () => {
-    const [customers, setCustomers] = useState([])
+    const [customers, updateCustomers] = useState([])
     const [totalCustomersMessage, updateMessage] = useState("")
 
     useEffect(
@@ -10,7 +10,7 @@ export const CustomerList = () => {
                 .then(res => res.json())
                 .then(
                     (customers) => {
-                        setCustomers(customers)
+                        updateCustomers(customers)
                     }
                 )
         },
