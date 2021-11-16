@@ -10,20 +10,12 @@ export const NavBar = () => {
                     <li className="navbar__item active">
                         <Link className="navbar__link" to="/customers">Customers</Link>
                     </li>
-                </ul>
-
-                <ul className="navbar">
                     <li className="navbar__item active">
                         <Link className="navbar__link" to="/employees">Employees</Link>
                     </li>
-                </ul>
-
-                <ul className="navbar">
                     <li className="navbar__item active">
                         <Link className="navbar__link" to="/tickets">Service Tickets</Link>
                     </li>
-                </ul>
-                <ul>
                     <li className="navbar__item active">
                         <Link className="navbar__link" to="#"
                             onClick={
@@ -34,8 +26,8 @@ export const NavBar = () => {
                             Logout
                         </Link>
                     </li>
-
                 </ul>
+
             </div>
 
 
