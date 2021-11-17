@@ -5,6 +5,8 @@ import { EmployeeList } from "./employees/EmployeeList";
 import { TicketList } from "../serviceTickets/TicketList";
 import { TicketForm } from "../serviceTickets/TicketForm";
 import { EmployeeForm } from "./employees/EmployeeForm";
+import { Ticket } from "../serviceTickets/Ticket";
+import { Employee } from "./employees/Employee";
 
 export const ApplicationViews = () => {
     return (
@@ -18,6 +20,10 @@ export const ApplicationViews = () => {
                 <EmployeeList />
             </Route>
             
+            <Route exact path="/employees/:employeeId(\d+)">
+                <Employee />
+            </Route>
+
             <Route exact path="/employees/hire">
                 <EmployeeForm />
             </Route>
@@ -30,6 +36,11 @@ export const ApplicationViews = () => {
                 <TicketForm />
             </Route>
 
+            <Route exact path="/tickets/:ticketId(\d+)">
+                <Ticket />
+            </Route>
+
         </>
     )
 }
+//^^Route path for individual tickets (:ticketId(/d+)) checks to make sure the ticketId that's passed through is a number

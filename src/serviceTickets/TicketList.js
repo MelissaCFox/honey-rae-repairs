@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 import './Tickets.css';
 
@@ -28,7 +29,7 @@ export const TicketList = () => {
                 tickets.map(
                     (ticket) => {
                         return <p key={ticket.id} className={ticket.emergency ? `ticket emergency` : `ticket`} >
-                        {ticket.emergency ? "🚑" : ""} {ticket.description} submitted by {ticket.customer.name} and worked on by {ticket.employee.name}
+                        {ticket.emergency ? "🚑" : ""} <Link to={`/tickets/${ticket.id}`}>{ticket.description}</Link> submitted by {ticket.customer.name} and worked on by {ticket.employee.name}
                     </p>
                     
                     }
