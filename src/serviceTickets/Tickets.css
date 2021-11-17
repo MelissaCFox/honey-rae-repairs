@@ -1,3 +1,7 @@
 .emergency {
     background-color: rgb(247, 188, 188);
 }
+
+.ticket {
+    padding: 0.75rem;
+}
