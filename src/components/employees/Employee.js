@@ -7,7 +7,7 @@ export const Employee = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/employees/${employeeId}`)
+            fetch(`http://localhost:8088/employees/${employeeId}?_embed=serviceTickets`)
                 .then(res => res.json())
                 .then(set)
         },
@@ -19,6 +19,7 @@ export const Employee = () => {
             <section className="employee">
                 <h3 className="employee__description">{employee.name}</h3>
                 <div className="employee__specialty">Specialty: {employee.specialty}</div>
+                <div className="employee__assignedTickets">Number of Assigned Service Tickets: {employee.serviceTickets?.length}</div>
             </section>
         </>
     )
