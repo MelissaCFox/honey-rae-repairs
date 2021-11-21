@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
+import { createUser, getCustomerByCustomerEmail } from "../APIManager"
 import "./Login.css"
 
 export const Register = (props) => {
@@ -9,8 +10,8 @@ export const Register = (props) => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${customer.email}`)
-            .then(res => res.json())
+        const email = customer.email
+        getCustomerByCustomerEmail(email)
             .then(user => !!user.length)
     }
     const handleRegister = (e) => {
@@ -18,14 +19,7 @@ export const Register = (props) => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    fetch("http://localhost:8088/customers", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(customer)
-                    })
-                        .then(res => res.json())
+                    createUser(customer)
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
                                 localStorage.setItem("honey_customer", createdUser.id)

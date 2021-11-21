@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { createTicket } from "../components/APIManager";
 
 export const TicketForm = () => {
     const [ticket, update] = useState({
@@ -18,15 +19,7 @@ export const TicketForm = () => {
             dateCompleted: ""
         }
 
-        const fetchOption = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(newTicket)
-        }
-
-        return fetch("http://localhost:8088/serviceTickets", fetchOption)
+        createTicket(newTicket)
             .then(() => {
                 history.push("/tickets")
             })
