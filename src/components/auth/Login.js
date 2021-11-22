@@ -10,7 +10,8 @@ export const Login = () => {
     const history = useHistory()
 
     const existingUserCheck = () => {
-        getCustomerByEmail(email)
+        return fetch(`http://localhost:8088/customers?email=${email}`)
+        .then(res => res.json())
             .then(user => user.length ? user[0] : false)
     }
 

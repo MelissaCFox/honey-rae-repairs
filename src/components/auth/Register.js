@@ -11,7 +11,8 @@ export const Register = (props) => {
 
     const existingUserCheck = () => {
         const email = customer.email
-        getCustomerByCustomerEmail(email)
+        return fetch(`http://localhost:8088/customers?email=${email}`)
+        .then(res => res.json())
             .then(user => !!user.length)
     }
     const handleRegister = (e) => {
