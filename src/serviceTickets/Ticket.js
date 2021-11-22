@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams, useHistory } from "react-router-dom"
-import { getAllEmployees, getTicketsWithCustomersAndEmployees, updateTicket } from "../components/APIManager"
+import { getAllEmployees, getTicketByIdWithCustomersAndEmployees, updateTicket } from "../components/APIManager"
 
 export const Ticket = () => {
     const [ticket, assignTicket] = useState({})  // State variable for current ticket object
