@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
+import { getAllTicketsWithCustomersAndEmployees, removeTicket } from "../components/APIManager";
 import './Tickets.css';
 
 
@@ -10,11 +11,10 @@ export const TicketList = () => {
 
 
     const fetchAndUpdateTickets = () => {
-        fetch("http://localhost:8088/serviceTickets?_expand=employee&_expand=customer")
-        .then(res => res.json())
-        .then((data) => {
-            updateTicket(data)
-        })
+        getAllTicketsWithCustomersAndEmployees()
+            .then((data) => {
+                updateTicket(data)
+            })
     }
 
     useEffect(
@@ -24,9 +24,8 @@ export const TicketList = () => {
         []
     )
     const deleteTicket = (id) => {
-        fetch(`http://localhost:8088/serviceTickets/${id}`, {
-            method: "DELETE"
-        }).then(() => fetchAndUpdateTickets())
+        removeTicket(id)
+            .then(() => fetchAndUpdateTickets())
     }
 
     return (
